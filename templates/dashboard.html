@@ -1,0 +1,22 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h2>EV Charging Analytics</h2>
+
+Total Stations: {{ total }} <br>
+Average Price: ₹{{ avg_price }}
+
+<canvas id="chart"></canvas>
+
+<script>
+new Chart(document.getElementById("chart"), {
+ type: "pie",
+ data: {
+   labels: {{ types.keys()|list }},
+   datasets: [{ data: {{ types.values()|list }} }]
+ }
+});
+</script>
+
+<a href="/map">View Map</a> |
+<a href="/add">Add Station</a> |
+<a href="/export">Export CSV</a>
